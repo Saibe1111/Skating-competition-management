@@ -96,8 +96,8 @@ void afficher_temps(const Mesure* mesu, const Inscrits* ins, int nbEquInsc) {
 			if (ins->list[j].data[i].dossard == d) {
 				for (int k = 1; k < 11; ++k) {
 					test = mesu->doss[d].temps[k];
-					printf("%i", test);
-					if (test = !0.0) {
+					// printf("%i", test);
+					if (test != 0.0) {
 						printf("%s ", ins->list[j].pays);
 						printf("%i ", k);
 						printf("%s ", ins->list[j].data[i].nom);
@@ -143,24 +143,20 @@ void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const 
 	int dmax = nbEquInsc * 3 + 100;
 	int dInt = 0;
 	int EqInsc = nbEquInsc;
-	for (int o = 1; o < 2; o++) {
-		printf(" VOILA LA L: %i \n", o);
+	for (int l = 1; l < (nbEquInsc / 2) +1; ++l) {
 		int k = 0;
 		int d = 101;
-		dInt = d + o * 6;
-
+		dInt = d + l * 6;
 		for (int i = 1; i < p + 1; ++i) {
-			for (int j = dInt- 6 ; j <  dInt ; ++j) {
+			for (int j = dInt - 6; j < dInt; ++j) {
 				if (mesu->doss[j].temps[i] != 0) {
 					k++;
 				}
 			}
-			printf("%i \n", k);
-			if (p == (k / 6)) {
-				printf("dection_fin_poursuite \n");
-			}
 		}
-
+		if (p == (k / 6)) {
+			printf("dection_fin_poursuite \n");
+		}
 	}
 }
 
