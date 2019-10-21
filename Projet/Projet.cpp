@@ -143,10 +143,11 @@ void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const 
 	int dmax = nbEquInsc * 3 + 100;
 	int dInt = 0;
 	int EqInsc = nbEquInsc;
-	for (int l = 1; l < (nbEquInsc / 2) +1; ++l) {
+	for (int o = 1; o < 2; o++) {
+		printf(" VOILA LA L: %i \n", o);
 		int k = 0;
 		int d = 101;
-		dInt = d + l * 6;
+		dInt = d + o * 6;
 
 		for (int i = 1; i < p + 1; ++i) {
 			for (int j = dInt- 6 ; j <  dInt ; ++j) {
@@ -154,6 +155,7 @@ void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const 
 					k++;
 				}
 			}
+			printf("%i \n", k);
 			if (p == (k / 6)) {
 				printf("dection_fin_poursuite \n");
 			}
