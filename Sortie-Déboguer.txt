@@ -1,0 +1,11 @@
+﻿'Projet.exe' (Win32) : Chargé 'C:\Users\Sebastien\Desktop\DUT Informatique\Projet\Projet\Debug\Projet.exe'. Les symboles ont été chargés.
+'Projet.exe' (Win32) : Chargé 'C:\Windows\SysWOW64\ntdll.dll'. Les symboles ont été chargés.
+'Projet.exe' (Win32) : Chargé 'C:\Windows\SysWOW64\kernel32.dll'. Les symboles ont été chargés.
+'Projet.exe' (Win32) : Chargé 'C:\Windows\SysWOW64\KernelBase.dll'. Les symboles ont été chargés.
+'Projet.exe' (Win32) : Chargé 'C:\Windows\SysWOW64\vcruntime140d.dll'. Les symboles ont été chargés.
+'Projet.exe' (Win32) : Chargé 'C:\Windows\SysWOW64\ucrtbased.dll'. Les symboles ont été chargés.
+Le thread 0xe70 s'est arrêté avec le code 0 (0x0).
+Le thread 0x2814 s'est arrêté avec le code -1073741510 (0xc000013a).
+Le thread 0x2850 s'est arrêté avec le code -1073741510 (0xc000013a).
+Le thread 0x2e28 s'est arrêté avec le code -1073741749 (0xc000004b).
+Le programme '[13844] Projet.exe' s'est arrêté avec le code -1073741510 (0xc000013a).
