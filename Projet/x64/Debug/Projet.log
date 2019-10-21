@@ -1,0 +1,3 @@
+﻿  Projet.cpp
+C:\Users\Sebastien\Documents\Github\IAP\IAP\Projet\Projet.cpp(98,34): warning C4244:  '=' : conversion de 'const float' en 'int', perte possible de données
+  Projet.vcxproj -> C:\Users\Sebastien\Documents\Github\IAP\IAP\x64\Debug\Projet.exe

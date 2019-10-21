@@ -141,14 +141,14 @@ void definition_parcours(Parcours* parc){
 void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const Inscrits* ins, int tour) {
 	int p = parc->parcours;
 	int dmax = nbEquInsc * 3 + 100;
+	int dInt = 0;
 	int EqInsc = nbEquInsc;
-
-
-	for (int l = 0; l < (nbEquInsc / 2); ++l) {
+	for (int l = 1; l < (nbEquInsc / 2) +1; ++l) {
 		int k = 0;
 		int d = 101;
+		dInt = d + l * 6;
 		for (int i = 1; i < p + 1; ++i) {
-			for (int j = 101; j < 106 + 1; ++j) {
+			for (int j = dInt - 6; j < dInt + 1; ++j) {
 				if (mesu->doss[j].temps[i] != 0) {
 					k++;
 				}
