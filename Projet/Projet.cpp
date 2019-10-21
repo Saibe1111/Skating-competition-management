@@ -147,16 +147,18 @@ void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const 
 		int k = 0;
 		int d = 101;
 		dInt = d + l * 6;
+
 		for (int i = 1; i < p + 1; ++i) {
-			for (int j = dInt - 6; j < dInt + 1; ++j) {
+			for (int j = dInt- 6 ; j <  dInt ; ++j) {
 				if (mesu->doss[j].temps[i] != 0) {
 					k++;
 				}
 			}
+			if (p == (k / 6)) {
+				printf("dection_fin_poursuite \n");
+			}
 		}
-		if (p == (k / 6)) {
-			printf("dection_fin_poursuite \n");
-		}
+
 	}
 }
 
