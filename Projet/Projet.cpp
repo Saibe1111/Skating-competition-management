@@ -41,15 +41,18 @@ typedef struct {
 }Mesure;
 typedef struct {
 	int parcours;
+	int max[20]; // stock temps max chaque equipe
 }Parcours;
 
 void inscription_equipe(Inscrits* insc, int* dossard, int nbEquInsc, Mesure* mesu) {
 	char mot[lgMot + 1];
 	int d = 0;
 	scanf("%s", mot);
+	//printf("%s", mot);
 	strcpy(insc->list[nbEquInsc].pays, mot);
 	for (int i = 0; i < nbPatEqu; i++) {
 		scanf("%s", mot);
+		//printf("%s", mot);
 		strcpy(insc->list[nbEquInsc].data[i].nom, mot);
 		insc->list[nbEquInsc].data[i].dossard = *dossard + i;
 		printf("inscription dossard %i\n", *dossard + i);
@@ -65,6 +68,7 @@ void inscription_equipe(Inscrits* insc, int* dossard, int nbEquInsc, Mesure* mes
 }void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const Inscrits* ins, int tour);
 
 void affichage_equipe(const Inscrits* ins, int nbEquInsc) {
+
 	for (int j = 0; j < nbEquInsc; j++) {
 		printf("%s ", ins->list[j].pays);
 		for (int i = 0; i < nbPatEqu; i++) {
@@ -85,7 +89,7 @@ void enregistrer_temps(Mesure* mesu, int nbEqInsc, Parcours* p, Inscrits* ins) {
 	mesu->doss[d].tour = e;
 	scanf("%f", tmp);
 	mesu->doss[d].temps[mesu->doss[d].tour] = *tmp;
-	detection_fin_poursuite( mesu, p, nbEqInsc, ins, e);
+	detection_fin_poursuite(mesu, p, nbEqInsc, ins, e);
 }
 void afficher_temps(const Mesure* mesu, const Inscrits* ins, int nbEquInsc) {
 	int d = 0;
@@ -131,19 +135,18 @@ void affichage_temps_equipes(Mesure* mesu, const Inscrits* ins, int* dossard, in
 		d = d + 3;
 	}
 }
-void definition_parcours(Parcours* parc){
+void definition_parcours(Parcours* parc) {
 	int p = 0;
 	scanf("%i", &parc->parcours);
-	if (parc->parcours < 1 || parc->parcours > 11) 
-		printf("Impossible \n"); 
-	
+	if (parc->parcours < 1 || parc->parcours > 11)
+		printf("Impossible \n");
 }
 void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const Inscrits* ins, int tour) {
 	int p = parc->parcours;
 	int dmax = nbEquInsc * 3 + 100;
 	int dInt = 0;
 	int EqInsc = nbEquInsc;
-	for (int l = 1; l < (nbEquInsc / 2) +1; ++l) {
+	for (int l = 1; l < (nbEquInsc / 2) + 1; ++l) {
 		int k = 0;
 		int d = 101;
 		dInt = d + l * 6;
@@ -156,6 +159,31 @@ void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const 
 		}
 		if (p == (k / 6)) {
 			printf("dection_fin_poursuite \n");
+			float a = 1, b = 0;
+			for (int i = 1; i < nbEquInsc + 1; ++i) {
+				for (int t = 0; t < p; t++) {
+
+					if (mesu->doss[d + 1].temps[t] < mesu->doss[d].temps[t] && mesu->doss[d + 2].temps[t] < mesu->doss[d].temps[t]) {
+						a = mesu->doss[d].temps[t];
+					}
+					if (mesu->doss[d].temps[t] < mesu->doss[d + 1].temps[t] && mesu->doss[d + 2].temps[t] < mesu->doss[d + 1].temps[t]) {
+						a = mesu->doss[d + 1].temps[t];
+					}
+					if (mesu->doss[d + 1].temps[t] < mesu->doss[d + 2].temps[t] && mesu->doss[d].temps[t] < mesu->doss[d + 2].temps[t]) {
+						a = mesu->doss[d + 2].temps[t];
+					}
+
+					printf("%f \n", a);
+
+					if (a > b) {
+						b = a;
+						parc->max[i] = a;
+					}
+
+				}
+			}
+			printf("%f", parc->max[1]);
+			printf("%f", parc->max[2]);
 		}
 	}
 }
@@ -183,7 +211,7 @@ int main() {
 			//    appeler la fonction afficher_equipes
 		}
 		if (strcmp(mot, "enregistrer_temps") == 0) {
-			enregistrer_temps(&m, nbEqInsc, &p,&i);
+			enregistrer_temps(&m, nbEqInsc, &p, &i);
 			//    appeler la fonction enregistrement_temps
 		}
 		if (strcmp(mot, "afficher_temps") == 0) {

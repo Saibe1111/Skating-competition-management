@@ -1,1 +1,6 @@
-﻿LINK : fatal error LNK1168: impossible d'ouvrir C:\Users\Sebastien\Documents\Github\IAP\IAP\x64\Debug\Projet.exe pour écrire
+﻿  Projet.cpp
+C:\Users\Sebastien\Documents\Github\IAP\IAP\Projet\Projet.cpp(102,34): warning C4244:  '=' : conversion de 'const float' en 'int', perte possible de données
+C:\Users\Sebastien\Documents\Github\IAP\IAP\Projet\Projet.cpp(180,22): warning C4244:  '=' : conversion de 'float' en 'int', perte possible de données
+C:\Users\Sebastien\Documents\Github\IAP\IAP\Projet\Projet.cpp(185,11): warning C4477:  'printf' : la chaîne de format '%f' nécessite un argument de type 'double', mais l'argument variadique 1 est de type 'int'
+C:\Users\Sebastien\Documents\Github\IAP\IAP\Projet\Projet.cpp(186,11): warning C4477:  'printf' : la chaîne de format '%f' nécessite un argument de type 'double', mais l'argument variadique 1 est de type 'int'
+LINK : fatal error LNK1168: impossible d'ouvrir C:\Users\Sebastien\Documents\Github\IAP\IAP\x64\Debug\Projet.exe pour écrire
