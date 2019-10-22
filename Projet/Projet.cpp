@@ -159,31 +159,6 @@ void detection_fin_poursuite(Mesure* mesu, Parcours* parc, int nbEquInsc, const 
 		}
 		if (p == (k / 6)) {
 			printf("dection_fin_poursuite \n");
-			float a = 1, b = 0;
-			for (int i = 1; i < nbEquInsc + 1; ++i) {
-				for (int t = 0; t < p; t++) {
-
-					if (mesu->doss[d + 1].temps[t] < mesu->doss[d].temps[t] && mesu->doss[d + 2].temps[t] < mesu->doss[d].temps[t]) {
-						a = mesu->doss[d].temps[t];
-					}
-					if (mesu->doss[d].temps[t] < mesu->doss[d + 1].temps[t] && mesu->doss[d + 2].temps[t] < mesu->doss[d + 1].temps[t]) {
-						a = mesu->doss[d + 1].temps[t];
-					}
-					if (mesu->doss[d + 1].temps[t] < mesu->doss[d + 2].temps[t] && mesu->doss[d].temps[t] < mesu->doss[d + 2].temps[t]) {
-						a = mesu->doss[d + 2].temps[t];
-					}
-
-					printf("%f \n", a);
-
-					if (a > b) {
-						b = a;
-						parc->max[i] = a;
-					}
-
-				}
-			}
-			printf("%f", parc->max[1]);
-			printf("%f", parc->max[2]);
 		}
 	}
 }
